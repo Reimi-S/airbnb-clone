@@ -4,6 +4,7 @@ import getCenter from 'geolib/es/getCenter';
 
 function Map({ searchResults }) {
   const [selectedLocation, setSelectedLocation] = useState({});
+
   const coordinates = searchResults.map((result) => ({
     longitude: result.long,
     latitude: result.lat,
@@ -12,14 +13,12 @@ function Map({ searchResults }) {
   const center = getCenter(coordinates);
 
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '100%',
+    width: '100vw',
+    height: '100vh',
     latitude: center.latitude,
     longitude: center.longitude,
     zoom: 11,
   });
-
-  console.log(center);
 
   return (
     <ReactMapGL
